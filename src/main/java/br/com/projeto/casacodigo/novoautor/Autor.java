@@ -26,6 +26,9 @@ public class Autor {
         this.descricao = descricao;
     }
 
+    public Autor() {
+    }
+
     @Override
     public String toString() {
         return "Autor{" +
