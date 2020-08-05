@@ -18,14 +18,6 @@ public class CategoriasController {
     @PersistenceContext
     private EntityManager manager;
 
-    @Autowired
-    private ProibeNomeDuplicadoCategoriaValidator proibeNomeDuplicadoCategoriaValidator;
-
-    @InitBinder
-    public void init(WebDataBinder binder) {
-        binder.addValidators(proibeNomeDuplicadoCategoriaValidator);
-    }
-
     @PostMapping(value = "/categorias")
     @Transactional
     public String cria(@RequestBody @Valid NovaCategoriaRequest request) {
