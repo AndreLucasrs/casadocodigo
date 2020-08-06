@@ -1,4 +1,4 @@
-package br.com.projeto.casacodigo.novacategoria;
+package br.com.projeto.casacodigo.novoLivro;
 
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -10,16 +10,17 @@ import javax.persistence.PersistenceContext;
 import javax.validation.Valid;
 
 @RestController
-public class CategoriasController {
+public class LivrosController {
 
     @PersistenceContext
     private EntityManager manager;
 
-    @PostMapping(value = "/categorias")
+    @PostMapping(value = "/livros")
     @Transactional
-    public String cria(@RequestBody @Valid NovaCategoriaRequest request) {
-        Categoria categoria = request.toModel();
-        manager.persist(categoria);
-        return categoria.toString();
+    public String criar(@RequestBody @Valid LivrosRequest resquest) {
+
+        Livro novoLivro = resquest.toModel(manager);
+        manager.persist(novoLivro);
+        return novoLivro.toString();
     }
 }

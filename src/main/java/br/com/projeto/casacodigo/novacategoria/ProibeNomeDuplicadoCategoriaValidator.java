@@ -20,13 +20,13 @@ public class ProibeNomeDuplicadoCategoriaValidator implements Validator {
 
     @Override
     public void validate(Object o, Errors errors) {
-        if(errors.hasErrors()) {
+        if (errors.hasErrors()) {
             return;
         }
         NovaCategoriaRequest request = (NovaCategoriaRequest) o;
         Optional<Categoria> categoria = repository.findByNome(request.getNome());
 
-        if(categoria.isPresent()) {
+        if (categoria.isPresent()) {
             errors.rejectValue("nome", "Já existe uma categoria com o mesmo nome " + request.getNome());
         }
     }
